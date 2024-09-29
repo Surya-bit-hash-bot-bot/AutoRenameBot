@@ -281,51 +281,56 @@ async def auto_rename_files(client, message):
             img.save(ph_path, "JPEG")
 
         try:
-            if media_type == "document":
-                await client.send_document(
-                    message.chat.id,
-                    document=path,
-                    thumb=ph_path,
-                    caption=caption,
-                    progress=progress_for_pyrogram,
-                    progress_args=("Upload Started...", upload_msg, time.time()))
-                await bot.send_video(
-                    Config.DUMP_CHANNEL,
-                    video=file_path,
-                    thumb=ph_path,
-                    caption=logcaption)
-            elif media_type == "video":
-                await client.send_video(
-                    message.chat.id,
-                    video=path,
-                    caption=caption,
-                    thumb=ph_path,
-                    duration=0,
-                    progress=progress_for_pyrogram,
-                    progress_args=("Upload Started...", upload_msg, time.time()))
-                await bot.send_video(
-                    Config.DUMP_CHANNEL,
-                    video=file_path,
-                    thumb=ph_path,
-                    caption=logcaption)
-            elif media_type == "audio":
-                await client.send_audio(
-                    message.chat.id,
-                    audio=path,
-                    caption=caption,
-                    thumb=ph_path,
-                    duration=0,
-                    progress=progress_for_pyrogram,
-                    progress_args=("Upload Started...", upload_msg, time.time()))
-                await bot.send_video(
-                    Config.DUMP_CHANNEL,
-                    video=file_path,
-                    thumb=ph_path,
-                    caption=logcaption)
-       except Exception as e:
-            os.remove(renamed_file_path)
-            if ph_path:
-                os.remove(ph_path)
+            if type == "document":
+            await bot.send_document(
+                update.message.chat.id,
+                document=file_path,
+                thumb=ph_path,
+                caption=caption,
+                progress=progress_for_pyrogram,
+                progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", ms, time.time()))
+            await bot.send_document(
+                Config.DUMP_CHANNEL,
+                document=file_path,
+                thumb=ph_path,
+                caption=logcaption)
+        elif type == "video":
+            await bot.send_video(
+                update.message.chat.id,
+                video=file_path,
+                caption=caption,
+                thumb=ph_path,
+                duration=duration,
+                progress=progress_for_pyrogram,
+                progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", ms, time.time()))
+            await bot.send_video(
+                Config.DUMP_CHANNEL,
+                video=file_path,
+                thumb=ph_path,
+                caption=logcaption)
+        elif type == "audio":
+            await bot.send_audio(
+                update.message.chat.id,
+                audio=file_path,
+                caption=caption,
+                thumb=ph_path,
+                duration=duration,
+                progress=progress_for_pyrogram,
+                progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", ms, time.time()))
+            await bot.send_audio(
+                Config.DUMP_CHANNEL,
+                audio=file_path,
+                thumb=ph_path,
+                caption=logcaption)
+    except Exception as e:
+        os.remove(file_path)
+        if ph_path:
+            os.remove(ph_path)
+        return await ms.edit(f" Eʀʀᴏʀ {e}")
+
+    await ms.delete()
+    os.remove(file_path)
+    if ph_path: os.remove(ph_path))
             # Mark the file as ignored
             return await upload_msg.edit(f"Error: {e}")
 
