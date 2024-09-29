@@ -288,8 +288,12 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     caption=caption,
                     progress=progress_for_pyrogram,
-                    progress_args=("Upload Started...", upload_msg, time.time()),
-                )
+                    progress_args=("Upload Started...", upload_msg, time.time()))
+                await bot.send_video(
+                    Config.DUMP_CHANNEL,
+                    video=file_path,
+                    thumb=ph_path,
+                    caption=logcaption)
             elif media_type == "video":
                 await client.send_video(
                     message.chat.id,
@@ -298,8 +302,12 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     duration=0,
                     progress=progress_for_pyrogram,
-                    progress_args=("Upload Started...", upload_msg, time.time()),
-                )
+                    progress_args=("Upload Started...", upload_msg, time.time()))
+                await bot.send_video(
+                    Config.DUMP_CHANNEL,
+                    video=file_path,
+                    thumb=ph_path,
+                    caption=logcaption)
             elif media_type == "audio":
                 await client.send_audio(
                     message.chat.id,
@@ -308,9 +316,13 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     duration=0,
                     progress=progress_for_pyrogram,
-                    progress_args=("Upload Started...", upload_msg, time.time()),
-                )
-        except Exception as e:
+                    progress_args=("Upload Started...", upload_msg, time.time()))
+                await bot.send_video(
+                    Config.DUMP_CHANNEL,
+                    video=file_path,
+                    thumb=ph_path,
+                    caption=logcaption)
+       except Exception as e:
             os.remove(renamed_file_path)
             if ph_path:
                 os.remove(ph_path)
