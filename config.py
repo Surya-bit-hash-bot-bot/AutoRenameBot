@@ -5,22 +5,22 @@ id_pattern = re.compile(r'^.\d+$')
 
 class Config(object):
     # pyro client config
-    API_ID    = os.environ.get("API_ID", "238902")
-    API_HASH  = os.environ.get("API_HASH", "da7e86c7b0e6220b8a9e0aed228a68")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7365322253:AAHboQtxtJ2Ov5E8xqBvbmz2fG82Atrw") 
+    API_ID    = os.environ.get("API_ID", "20478011")
+    API_HASH  = os.environ.get("API_HASH", "0e4dcf39643e83c3c174a0d2370e5b4a")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "") 
 
     # database config
     DB_NAME = os.environ.get("DB_NAME","codeflix")     
-    DB_URL  = os.environ.get("DB_URL","mongodb+srv://public:public@cluster0.aisg0rh.mongodb.net/?retryWrites=true&w=majority")
+    DB_URL  = os.environ.get("DB_URL","mongodb+srv://suryagupta1928:6thfnQ3AxzK6VJUA@cluster0.6ppqasw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     PORT = os.environ.get("PORT", "25")
  
     # other configs
     BOT_UPTIME  = time.time()
     START_PIC   = os.environ.get("START_PIC", "https://graph.org/file/29a3acbbab9de5f45a5fe.jpg")
-    ADMIN       = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMIN', '6497757690').split()]
-    FORCE_SUB_CHANNELS = os.environ.get('FORCE_SUB_CHANNELS', 'codeflix_bots,codeflixsupport,anime_cruise_netflix').split(',')
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001868871195"))
-    DUMP_CHANNEL = int(os.environ.get("DUMP_CHANNEL", ""))
+    ADMIN       = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMIN', '2061656269').split()]
+    FORCE_SUB_CHANNELS = os.environ.get('FORCE_SUB_CHANNELS', 'Anime_Sparta').split(',')
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002306621324"))
+    DUMP_CHANNEL = int(os.environ.get("DUMP_CHANNEL", "-1002306621324"))
     
     # wes response configuration     
     WEBHOOK = bool(os.environ.get("WEBHOOK", "True"))
