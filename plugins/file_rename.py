@@ -326,9 +326,9 @@ async def auto_rename_files(client, message):
             os.remove(file_path)
             if ph_path:
                 os.remove(ph_path)
-        return await ms.edit(f" Eʀʀᴏʀ {e}")
+        return await msg.edit(f" Eʀʀᴏʀ {e}")
 
-        await ms.delete()
+        await msg.delete()
         os.remove(file_path)
         if ph_path: os.remove(ph_path)
             # Mark the file as ignored
