@@ -284,20 +284,20 @@ async def auto_rename_files(client, message):
             if type == "document":
                 await bot.send_document(
                     update.message.chat.id,
-                    document=file_path,
+                    document=path,
                     thumb=ph_path,
                     caption=caption,
                     progress=progress_for_pyrogram,
                     progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", upload_msg, time.time()))
                 await bot.send_document(
                     Config.DUMP_CHANNEL,
-                    document=file_path,
+                    document=path,
                     thumb=ph_path,
                     caption=logcaption)
             elif type == "video":
                 await bot.send_video(
                     update.message.chat.id,
-                    video=file_path,
+                    video=path,
                     caption=caption,
                     thumb=ph_path,
                     duration=duration,
@@ -305,13 +305,13 @@ async def auto_rename_files(client, message):
                     progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", upload_msg, time.time()))
                 await bot.send_video(
                     Config.DUMP_CHANNEL,
-                    video=file_path,
+                    video=path,
                     thumb=ph_path,
                     caption=logcaption)
             elif type == "audio":
                 await bot.send_audio(
                     update.message.chat.id,
-                    audio=file_path,
+                    audio=path,
                     caption=caption,
                     thumb=ph_path,
                     duration=duration,
@@ -323,15 +323,15 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     caption=logcaption)
         except Exception as e:
-            if file_path:            
-                os.remove(file_path)
+            if path:            
+                os.remove(path)
             
             if ph_path:
                 os.remove(ph_path)        
         
         await upload_msg.delete()
-        if file_path: 
-            os.remove(file_path)
+        if path: 
+            os.remove(path)
         
         
         if ph_path: 
