@@ -288,7 +288,7 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     caption=caption,
                     progress=progress_for_pyrogram,
-                    progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", ms, time.time()))
+                    progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", upload_msg, time.time()))
                 await bot.send_document(
                     Config.DUMP_CHANNEL,
                     document=file_path,
@@ -302,7 +302,7 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     duration=duration,
                     progress=progress_for_pyrogram,
-                    progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", ms, time.time()))
+                    progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", upload_msg, time.time()))
                 await bot.send_video(
                     Config.DUMP_CHANNEL,
                     video=file_path,
@@ -316,7 +316,7 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     duration=duration,
                     progress=progress_for_pyrogram,
-                    progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", ms, time.time()))
+                    progress_args=("Uᴩʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ....", upload_msg, time.time()))
                 await bot.send_audio(
                     Config.DUMP_CHANNEL,
                     audio=file_path,
@@ -326,15 +326,15 @@ async def auto_rename_files(client, message):
             os.remove(file_path)
             if ph_path:
                 os.remove(ph_path)
-        return await ms.edit(f" Eʀʀᴏʀ {e}")
+        return await upload_msg.edit(f" Eʀʀᴏʀ {e}")
 
         await msg.delete()
         os.remove(file_path)
         if ph_path: os.remove(ph_path)
             # Mark the file as ignored
-        return await upload_ms.edit(f"Error: {e}")
+        return await upload_msg.edit(f"Error: {e}")
 
-        await download_msg.delete() 
+        await upload_msg.delete() 
         os.remove(file_path)
         if ph_path:
             os.remove(ph_path)
