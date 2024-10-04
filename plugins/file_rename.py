@@ -325,8 +325,7 @@ async def auto_rename_files(client, message):
         except Exception as e:
             os.remove(file_path)
             if ph_path:
-                os.remove(ph_path)
-        return await upload_msg.edit(f"Error: {e}")
+                os.remove(ph_path)        
         
         await upload_msg.delete()
         os.remove(file_path)
