@@ -323,12 +323,17 @@ async def auto_rename_files(client, message):
                     thumb=ph_path,
                     caption=logcaption)
         except Exception as e:
-            os.remove(file_path)
+            if file_path:            
+                os.remove(file_path)
+            
             if ph_path:
                 os.remove(ph_path)        
         
         await upload_msg.delete()
-        os.remove(file_path)
+        if file_path: 
+            os.remove(file_path)
+        
+        
         if ph_path: 
             os.remove(ph_path)
        
